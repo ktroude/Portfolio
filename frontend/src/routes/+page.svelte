@@ -94,12 +94,12 @@
 
 
 function startInvaders() {
-  const intervalDuration = 16; // Durée en millisecondes entre chaque rafraîchissement
+  const intervalDuration = 16; // Duree en millisecondes entre chaque rafraichissement
   const randomDuration = Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000;
   const intervalId = setInterval(() => {
     invadersPack = invadersPack.map((invader) => {
       invader = move(invader);
-      invader.timer -= intervalDuration;
+      invader.timer -= intervalDuration; // --> Utiliser ft_usleep() plutot? Plus de précision, a voir donc
 
       // Vérifier si le timer a expiré
       if (invader.timer <= 0) {
