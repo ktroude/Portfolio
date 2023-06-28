@@ -56,7 +56,7 @@
   
 	function createInvaders(nb: number) {
 	  for (let i = 0; i < nb; i++) {
-		invadersPack = [...invadersPack, create_invader(50 * i, 50 * i, 0)];
+		invadersPack = [...invadersPack, create_invader(i + 20, i + 20, 0)];
 	  }
 	  invadersPackStore.set(invadersPack);
 	}
@@ -67,7 +67,7 @@
 		y,
 		life: status + 1,
 		speed: status + 2,
-		status,
+		status: status,
 		dir: "",
 		timer: 0,
 	  };
@@ -116,7 +116,7 @@ function startInvaders() {
 
   
 	onMount(() => {
-	  createInvaders(50);
+	  createInvaders(10);
 	  startInvaders();
 	  loading = true;
 	});
@@ -125,10 +125,22 @@ function startInvaders() {
 
 <svelte:head>
 	<title>Hello World!</title>
-	<link rel="stylesheet" href="src/style.css">
+	<link rel="stylesheet" href="css/style.css">
 </svelte:head>
 
 <body class="body">
+
+<div class="header">
+	<p class="header_text">Hello world, do you need a developer ?</p>	
+	<img class="header_rectangle" src="img/Rectangle 1.png" alt="beautifull shaders">
+	<img class="header_invader" src="img/Groupe 2/Groupe 2.png" alt="big space invader">
+</div>
+
+<div class="2nd_screen">
+
+</div>
+
+
 	{#if loading === true}
 		{#each invadersPack as invader}
 			{#if invader.status === 0}

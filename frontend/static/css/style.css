@@ -1,0 +1,66 @@
+.body{
+    /* Layout Properties */
+    margin: 0px;
+    padding: 0px;
+    /* top: 0px;
+    left: 0px; */
+    width: 1920px;
+    height: 3420px;
+    /* UI Properties */
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;
+    }
+
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.header_rectangle{
+    width: 100%;
+    height: auto;
+    top: 0px;
+    left: 0px;
+    width: 1920px;
+    height: 1080px;
+    background: transparent url('img/Rectangle 1.png') 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.header_text{
+    position: absolute;
+    z-index: 1;
+    top: 432px;
+    left: 333px;
+    width: 1254px;
+    height: 220px;
+    font: normal normal normal 120px/100px Minimo;    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-000000);
+    text-align: center;
+    font: normal normal normal 120px/100px Minimo;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+}
+
+.header_invader{
+    position: absolute;
+    z-index: 0; 
+    top: 104px;
+    left: 427px;
+    width: 1065px;
+    height: 771px;
+    background: transparent url('img/Groupe 2.png') 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.weak_invader{
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    position: absolute;
+}
