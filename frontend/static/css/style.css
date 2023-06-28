@@ -4,14 +4,21 @@
     padding: 0px;
     /* top: 0px;
     left: 0px; */
-    width: 1920px;
-    height: 3420px;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
     /* UI Properties */
     background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
     background-image: url('img/invader/invader.png');
     }
+
+@font-face {
+    font-family: 'Minimo';
+    src: url('fonts/Ahmet-Altun-Minimo-Regular_0.otf') format('opentype');
+    }
+
 
 .header_div{
     display: flex;
@@ -39,10 +46,10 @@
     left: 333px;
     width: 1254px;
     height: 220px;
-    font: normal normal normal 120px/100px Minimo;    letter-spacing: var(--unnamed-character-spacing-0);
+    font: normal 120px/100px Minimo;
+    letter-spacing: var(--unnamed-character-spacing-0);
     color: var(--unnamed-color-000000);
     text-align: center;
-    font: normal normal normal 120px/100px Minimo;
     letter-spacing: 0px;
     color: #000000;
     opacity: 1;

@@ -132,8 +132,8 @@ function startInvaders() {
 
 <div class="header_div">
 	<p class="header_text">Hello world, do you need a developer ?</p>	
-	<div class="header_rectangle">
-	<div class="header_invader">
+	<div class="header_rectangle"> </div>
+	<div class="header_invader"> </div>
 </div>
 
 <div class="second_screen">
