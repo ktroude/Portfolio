@@ -10,9 +10,10 @@
     background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
+    background-image: url('img/invader/invader.png');
     }
 
-.header{
+.header_div{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,13 +55,25 @@
     left: 427px;
     width: 1065px;
     height: 771px;
-    background: transparent url('img/Groupe 2.png') 0% 0% no-repeat padding-box;
+    border: 0px;
+    background: transparent url('img/Groupe 2/Groupe 2.png') 0% 0% no-repeat padding-box;
     opacity: 1;
 }
 
 .weak_invader{
     width: 20px;
     height: 20px;
-    background-color: red;
+    /* background-color: red; */
+    background-image: url('img/invader/invader.png');
+    background-size: contain;
     position: absolute;
 }
+
+
+/* ----------------------------------------------- */
+/* ------------------- 2nd Bloc ------------------ */
+/* ----------------------------------------------- */
+
+/* .second_screen{
+    width: 
+} */

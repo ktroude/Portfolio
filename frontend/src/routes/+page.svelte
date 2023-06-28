@@ -130,28 +130,22 @@ function startInvaders() {
 
 <body class="body">
 
-<div class="header">
+<div class="header_div">
 	<p class="header_text">Hello world, do you need a developer ?</p>	
-	<img class="header_rectangle" src="img/Rectangle 1.png" alt="beautifull shaders">
-	<img class="header_invader" src="img/Groupe 2/Groupe 2.png" alt="big space invader">
+	<div class="header_rectangle">
+	<div class="header_invader">
 </div>
 
-<div class="2nd_screen">
+<div class="second_screen">
 
 </div>
 
 
 	{#if loading === true}
 		{#each invadersPack as invader}
-			{#if invader.status === 0}
-				<div class="weak_invader" style="left: {invader.x}px; top: {invader.y}px;"></div>
-			{/if}
-			{#if invader.status === 1}
-				<div class="middle_invader" style="left: {invader.x}px; top: {invader.y}px;"></div>
-			{/if}
-			{#if invader.status === 2}
-				<div class="strong_invader" style="left: {invader.x}px; top: {invader.y}px;"></div>
-			{/if}
+		<div class= "weak_invader" style="left: {invader.x}px; top: {invader.y}px;"> </div>
 		{/each}
 	{/if}
+
+	<div class="weak_invader"></div>
 </body>
