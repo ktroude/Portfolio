@@ -138,6 +138,8 @@ function startInvaders() {
 
 <div class="second_screen">
 
+	<p class="main_text"> My name is Kevin Troude, and I’m a developer. I studied in school 42. I can write in C, C++, Javascript, Python, and I can learn quickly any further language. I bet we can make a great work together, wanna give it a try ?</p>
+
 </div>
 
 
@@ -147,5 +149,4 @@ function startInvaders() {
 		{/each}
 	{/if}
 
-	<div class="weak_invader"></div>
 </body>
