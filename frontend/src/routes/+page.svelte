@@ -53,15 +53,17 @@
 	  }
 	  return div;
 	}
-  
+
 	function createInvaders(nb: number) {
 	  for (let i = 0; i < nb; i++) {
-		invadersPack = [...invadersPack, create_invader(i + 20, i + 20, 0)];
+		invadersPack = [...invadersPack, create_invader(i * 100, i*100, 0)];
+		getDir(invadersPack[i]);
 	  }
 	  invadersPackStore.set(invadersPack);
 	}
   
 	function create_invader(x: number, y: number, status: number): Invader {
+		const randomDuration = Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000;
 	  return {
 		x,
 		y,
@@ -69,42 +71,41 @@
 		speed: status + 2,
 		status: status,
 		dir: "",
-		timer: 0,
+		timer: randomDuration,
 	  };
 	}
   
-	function executeInvader(invader: Invader): Promise<void> {
-  return new Promise((resolve) => {
-    const randomDuration = Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000;
-    invader = getDir(invader);
-    invader = move(invader);
-    invader.timer = randomDuration;
-    invadersPack = invadersPack.map((item) => (item === invader ? invader : item)); // Mettre à jour les coordonnées dans le tableau
-    invadersPackStore.set(invadersPack); // Mettre à jour le store
-    if (invader.timer > 0) {
-      setTimeout(() => {
-        executeInvader(invader).then(resolve);
-      }, invader.timer);
-    } else {
-      resolve();
-    }
-  });
-}
+// 	function executeInvader(invader: Invader): Promise<void> {
+//   return new Promise((resolve) => {
+//     const randomDuration = Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000;
+//     invader = getDir(invader);
+//     invader = move(invader);
+//     invader.timer = randomDuration;
+//     invadersPack = invadersPack.map((item) => (item === invader ? invader : item)); // Mettre à jour les coordonnées dans le tableau
+//     invadersPackStore.set(invadersPack); // Mettre à jour le store
+//     if (invader.timer > 0) {
+//       setTimeout(() => {
+//         executeInvader(invader).then(resolve);
+//       }, invader.timer);
+//     } else {
+//       resolve();
+//     }
+//   });
+// }
 
 
 
 function startInvaders() {
-  const intervalDuration = 16; // Duree en millisecondes entre chaque rafraichissement
-  const randomDuration = Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000;
-  const intervalId = setInterval(() => {
+	const intervalDuration = 16; // Durée en millisecondes entre chaque rafraîchissement
+ 	setInterval(() => {
     invadersPack = invadersPack.map((invader) => {
       invader = move(invader);
-      invader.timer -= intervalDuration; // --> Utiliser ft_usleep() plutot? Plus de précision, a voir donc
+      invader.timer -= intervalDuration; // --> Utiliser ft_usleep() plutôt ? Plus de précision, à voir donc
 
       // Vérifier si le timer a expiré
       if (invader.timer <= 0) {
         invader = getDir(invader);
-        invader.timer = randomDuration;
+        invader.timer = Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000;
       }
 
       return invader;
@@ -112,6 +113,7 @@ function startInvaders() {
     invadersPackStore.set(invadersPack);
   }, intervalDuration);
 }
+
 
 
   
@@ -129,6 +131,7 @@ function startInvaders() {
 </svelte:head>
 
 <body class="body">
+	{#if loading === true}
 
 <div class="header_div">
 	<p class="header_text">Hello world, do you need a developer ?</p>	
@@ -136,14 +139,17 @@ function startInvaders() {
 	<div class="header_invader"> </div>
 </div>
 
-<div class="second_screen">
 
-	<p class="main_text"> My name is Kevin Troude, and I’m a developer. I studied in school 42. I can write in C, C++, Javascript, Python, and I can learn quickly any further language. I bet we can make a great work together, wanna give it a try ?</p>
-
+<div class="main_text_container"> 
+<p class="main_text"> My name is Kevin Troude, and I’m a developer. </p>
+<p class="main_text"> I studied in school 42. I can write in C, C++, Javascript, </p>
+<p class="main_text"> Python, and I can learn quickly any further language. </p>
+<p class="main_text"> I bet we can make a great work together, </p>
+<p class="main_text"> wanna give it a try ? </p>
 </div>
 
 
-	{#if loading === true}
+
 		{#each invadersPack as invader}
 		<div class= "weak_invader" style="left: {invader.x}px; top: {invader.y}px;"> </div>
 		{/each}
