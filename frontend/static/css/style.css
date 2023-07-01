@@ -8,6 +8,8 @@
     /* UI Properties */
     background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
+    border: 2px;
+    border-color: red;
     }
 
 @font-face {
@@ -15,108 +17,120 @@
     src: url('fonts/Ahmet-Altun-Minimo-Regular_0.otf') format('opentype');
     }
 
-
-.header_div{
-    margin: 0px;
-    padding: 0px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.header_box{
+    /* display: flex; */
+    width: 100vw;
+    height: 100vh;
+    background-image: url('img/Rectangle\ 1.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    text-align: center;
     position: relative;
 }
 
-.header_rectangle{
-    width: 100%;
-    height: auto;
-    top: 0px;
-    left: 0px;
-    width: 1920px;
-    height: 1080px;
-    background: transparent url('img/Rectangle 1.png') 0% 0% no-repeat padding-box;
-    opacity: 1;
-}
-
 .header_text{
-    position: absolute;
-    z-index: 1;
-    top: 432px;
-    left: 333px;
-    width: 1254px;
-    height: 220px;
+    margin: 0;
     font: normal 120px/100px Minimo;
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(--unnamed-color-000000);
-    text-align: center;
-    letter-spacing: 0px;
-    color: #000000;
-    opacity: 1;
+    color: black;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
 }
 
 .header_invader{
-    margin: 0px;
-    padding: 0px;
     position: absolute;
-    z-index: 0; 
-    top: 104px;
-    left: 427px;
-    width: 1065px;
-    height: 771px;
-    border: 0px;
-    background: transparent url('img/Groupe 2/Groupe 2.png') 0% 0% no-repeat padding-box;
-    opacity: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
 }
 
-.weak_invader{
-    width: 70px;
-    height: 51px;
-    /* background-color: red; */
-    margin: 0px;
-    padding: 0px;
-    background-image: url('img/invader/invader.png');
-    background-size: contain;
-    position: absolute;
-    opacity: 1;
-
+.presentation_box{
+    width: 100vw;
+    height: fit-content;
+    background-color: transparent;
+    position: relative;
+    margin: 0;
+    padding: 1%; /* Ajoutez un espace pour voir la div */
+    box-sizing: border-box; /* Inclure le padding dans la largeur totale */
 }
 
-
-/* ----------------------------------------------- */
-/* ------------------- 2nd Bloc ------------------ */
-/* ----------------------------------------------- */
-
-.main_text_container {
-    /* Layout Properties */
-    /* margin-top: 510px; */
-    /* padding-top: -calc(-30%); */
-    /* margin-left: 30%;
-    margin-right: 30%; */
-    /* margin: 0px; */
-    padding: 0px;
-    margin-top: 10%;
-    display:inline;
-    /* top: 1171px; */
-    /* left: 50%; */
-    /* transform: translate(-50%, -50%); */
-    width: 1092px;
-    height: 208px;
-  
-    /* UI Properties */
+.presentation_text{
+    margin: 0;
+    font: normal 2vw/2vw Minimo;
+    width: 60%;
+    margin: 0 auto; /* Centrer horizontalement */
     text-align: center;
-    font: normal normal normal 40px/42px Minimo;
-    letter-spacing: 0px;
-    color: #000000;
-    opacity: 1;
+}
+
+.code_box {
+	display: flex;
+	justify-content: center;
+	background-color: transparent;
+}
+  
+  .code_img_container {
+	position: relative;
+	width: 80%;
+	display: flex;
+	justify-content: center;
+	background-color: transparent;
+}
+  
+.code_img {
+	width: 100%;
+	height: auto;
+}
+
+.code_text{
+    width: 80%;
+	position: absolute;
+	top: 40%;
+	left: 55%;
+	transform: translate(-50%, -50%);
+	color: #FFFFFF;
+	font: normal normal normal 5vw/5vw Minimo;
+}
+
+.code{
+    width: 80%;
+	position: absolute;
+	top: 40%;
+    justify-content: center;
+	left: 55%;
+	transform: translate(-50%, -50%);
+	color: #80F4A5;
+	font: normal normal normal 3vw/3vw Minimo;
+    background-color: black;
+    overflow: hidden;
+
+}
+
+.code_button{
+    margin: 0;
+	display: inline-block;
+	font: normal normal normal 4vw/4vw Minimo;
+	color: #80F4A5;
+	background-color: transparent;
+	border: none;
+}
+
+@media (max-width: 768px) {
+    .header_text {
+      font-size: 80px;
+      line-height: 80px;
+    }
+
+    .presentation_text {
+        font: normal 30px/32px Minimo;
+        width: 80%;
+    }
+
+    .code_text{
+        /* font: normal 50px/52px Minimo; */
+    }
   }
- 
-.main_text{
-    margin: 0px;
-    padding: 0px;
-}
-
-.second_screen{
-    margin: 0px;
-    padding: 0px;
-    display: flex;
-
-}

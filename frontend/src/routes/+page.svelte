@@ -5,7 +5,12 @@
 	let loading: boolean = false;
 	let invadersPack: Invader[] = [];
 	const invadersPackStore = writable(invadersPack);
-  
+ 
+	let startCode:boolean = false;
+	let userInputNb:number = 0;
+	let userCode:string = '';
+	let code:string = '';
+
 	interface Invader {
 	  x: number;
 	  y: number;
@@ -115,8 +120,55 @@ function startInvaders() {
 }
 
 
+function initCode() {
+	startCode = true;
+	startCaretInterval();
+	window.addEventListener('keypress', handleKeyPress);
+	code = '	function create_invader(x: number, y: number, status: number): Invader {\
+		const randomDuration = Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000;\
+	  return {\
+		x,\
+		y,\
+		life: status + 1,\
+		speed: status + 2,\
+		status: status,\
+		dir: "" \
+		timer: randomDuration,\
+	  };\
+	}'
+}
 
-  
+function handleKeyPress(event: KeyboardEvent) {
+	userInputNb++;
+	displayCode();
+}
+
+function stopCode() {
+	startCode = false;
+	userInputNb = 0;	
+	stopCaretInterval();
+	window.removeEventListener('keypress', handleKeyPress);
+}
+
+function displayCode() {
+	userCode = code.slice(0, userInputNb * 2);
+}
+
+let caretPosition:number = 0;
+let caretVisible:boolean = false;
+let caretInterval:any;
+
+function startCaretInterval() {
+    caretInterval = setInterval(() => {
+      caretVisible = !caretVisible;
+    }, 500);
+}
+
+function stopCaretInterval() {
+	clearInterval(caretInterval);
+}
+
+
 	onMount(() => {
 	  createInvaders(10);
 	  startInvaders();
@@ -133,26 +185,28 @@ function startInvaders() {
 <body class="body">
 	{#if loading === true}
 
-<div class="header_div">
-	<p class="header_text">Hello world, do you need a developer ?</p>	
-	<div class="header_rectangle"> </div>
-	<div class="header_invader"> </div>
-</div>
+	<div class="header_box">
+		<p class="header_text">Hello World! Do you need a developer?</p> 
+		<img class="header_invader" src="css/img/Groupe 2/Groupe 2.png" alt="big invader">
+	</div>
 
+	<div class='presentation_box'>
+		<p class='presentation_text' style='margin-top: 91px;'>	My name is Kevin Troude, and I’m a developer.
+		<p class='presentation_text'>	I studied in school 42. I can write in C, C++, Javascript, Python, and I can learn quickly any further language.
+		<p class='presentation_text' style='margin-bottom: 76px;'>	I bet we can make a great work together, wanna give it a try ?
+	</div>
 
-<div class="main_text_container"> 
-<p class="main_text"> My name is Kevin Troude, and I’m a developer. </p>
-<p class="main_text"> I studied in school 42. I can write in C, C++, Javascript, </p>
-<p class="main_text"> Python, and I can learn quickly any further language. </p>
-<p class="main_text"> I bet we can make a great work together, </p>
-<p class="main_text"> wanna give it a try ? </p>
-</div>
+	<div class='code_box'>
+		<div class="code_img_container">
+			<img class='code_img' src='css/img/Rectangle 310.png' alt='black rectangle'>
+			{#if startCode === false}
+				<p class="code_text">Let’s work together. Write anything <button class="code_button" on:click={() => initCode()}> in here ! </button></p>
+			{:else}
+				<p class="code">{userCode} {#if caretVisible == true }|{/if} 
+			{/if}
+		</div>
+	</div>
 
-
-
-		{#each invadersPack as invader}
-		<div class= "weak_invader" style="left: {invader.x}px; top: {invader.y}px;"> </div>
-		{/each}
 	{/if}
 
 </body>
