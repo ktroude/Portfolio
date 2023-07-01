@@ -207,6 +207,28 @@ function stopCaretInterval() {
 		</div>
 	</div>
 
+	<div class="project_box">
+		<div class="project_1">
+			<button class="project_button"></button>
+			<img class="project_img" src="css/img/Groupe 16.png" alt="">
+			<p class="project_text">Développement front-end et back-end</p>
+		</div>
+		<div class="project_2">
+			<button class="project_button"></button>
+			<img class="project_img" src="css/img/Groupe 14.png" alt="">
+			<p class="project_text">Création de site web</p>
+		</div>
+		<div class="project_3">
+			<button class="project_button"></button>
+			<img class="project_img" src="css/img/Groupe 12.png" alt="">
+			<p class="project_text">Développement de logiciel (utilisation d’algorithmes)</p>
+		</div>
+	</div>
+	
+	<div class="work_box">
+		<p class="work_text">Would you like to work with me ?</p>
+	</div>
+	
 	{/if}
 
 </body>

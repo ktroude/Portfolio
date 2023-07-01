@@ -8,8 +8,6 @@
     /* UI Properties */
     background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
-    border: 2px;
-    border-color: red;
     }
 
 @font-face {
@@ -89,7 +87,7 @@
 .code_text{
     width: 80%;
 	position: absolute;
-	top: 40%;
+	top: 28%;
 	left: 55%;
 	transform: translate(-50%, -50%);
 	color: #FFFFFF;
@@ -113,10 +111,104 @@
 .code_button{
     margin: 0;
 	display: inline-block;
-	font: normal normal normal 4vw/4vw Minimo;
+	font: normal normal normal 5vw/5vw Minimo;
 	color: #80F4A5;
 	background-color: transparent;
 	border: none;
+}
+
+.project_box{
+    display: flex;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 50vh;
+}
+
+.project_1{
+    margin-top: 16px;
+    margin-top: 16px;
+    margin-left: 8px;
+    margin-right: 8px;
+    width: 300px;
+    height: 300px;
+    max-height: 100%;
+    background-image: url('img/Rectangle\ 20.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+    justify-items: center;
+    position: relative;
+}
+
+.project_2{
+    margin-top: 16px;
+    margin-left: 8px;
+    margin-right: 8px;
+    width: 300px;
+    height: 300px;
+    max-height: 100%;
+    background-image: url('img/Rectangle\ 24.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+    justify-items: center;
+    position: relative;
+}
+
+.project_3{
+    margin-top: 16px;
+    margin-left: 8px;
+    margin-right: 8px;
+    width: 300px;
+    height: 300px;
+    max-height: 100%;
+    background-image: url('img/Rectangle\ 22.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+    justify-items: center;
+    position: relative;
+}
+
+.project_button{
+    border: none;
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+}
+
+.project_text{
+    width: 100%;
+    font: normal 26px/30px Minimo;
+    position: absolute;
+    top: 77%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.project_img{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.work_box{
+    margin-top: 177px;
+    width: 100vw;
+    height: 50vh;
+    background-color: black;
+    text-align: center;
+}
+
+.work_text{
+    color: #FFFFFF;
+    font: normal normal medium 77px/70px Pangram;
 }
 
 @media (max-width: 768px) {
@@ -130,7 +222,7 @@
         width: 80%;
     }
 
-    .code_text{
-        /* font: normal 50px/52px Minimo; */
+    .project_text{
+        font: normal 15px/20px Minimo;
     }
   }
