@@ -2,6 +2,7 @@
 	import { writable } from 'svelte/store';
 	import { onMount } from 'svelte';
 	import { TweenMax } from 'gsap';
+
   
 	let loading: boolean = false;
 	let invadersPack: Invader[] = [];
@@ -17,6 +18,8 @@
 	let reduce:boolean = false;
 
 	let startScroll:boolean = false;
+
+	let isLargeScreen:boolean = false;
 
 
 	interface Invader {
@@ -212,12 +215,19 @@ function stopCaretInterval() {
 		displayCode();
   	}
   }
+
+	function handleResize() {
+    	const mediaQuery = window.matchMedia('(min-width: 1155px)');
+    	isLargeScreen = mediaQuery.matches;
+  	}
  
   onMount(() => {
-	  startCaretInterval();
-	  createInvaders(10);
+	    handleResize();
+		window.addEventListener('resize', handleResize);
+		startCaretInterval();
+		createInvaders(10);
 	  //  startInvaders();
-	  loading = true;
+		loading = true;
 	});
 	</script>
   
@@ -232,9 +242,9 @@ function stopCaretInterval() {
 	<body class="body">
 		{#if loading === true}
 		
-		{#each invadersPack as invader}
+		<!-- {#each invadersPack as invader}
 		<div class='invader' style="left: calc({invader.x}vw); top: calc({invader.y}vh);"></div>
-		{/each}
+		{/each} -->
 		
 		<div class="header_box">
 			<p class="header_text">Hello World! Do you need a developer?</p> 
@@ -243,13 +253,18 @@ function stopCaretInterval() {
 		
 		<div class='presentation_box'>
 			<p class='presentation_text' style='margin-top: 91px;'>	My name is Kevin Troude, and I’m a developer.
-				<p class='presentation_text'>	I studied in school 42. I can write in C, C++, Javascript, Python, and I can learn quickly any further language.
-					<p class='presentation_text' style='margin-bottom: 76px;'>	I bet we can make a great work together, wanna give it a try ?
+				<p class='presentation_text'>	I studied in school 42. I can write in C, C++,<br> Javascript, Python, and I can learn quickly any further language.
+					<p class='presentation_text' style='margin-bottom: 76px;'>	I bet we can make a great work together,<br>wanna give it a try ?
 					</div>
 					
 					<div class='code_box'>
 		<div class="code_img_container">
-			<img class='code_img' src='css/img/code_box/Rectangle 310.svg' alt='black rectangle'>
+			{#if isLargeScreen}
+				<img class='code_img' src='css/img/code_box/Rectangle 310.svg' alt='black rectangle'>
+			{:else}
+				<img class='code_img' src='css/img/code_box/Groupe 18.svg' alt='black rectangle'>
+			{/if}
+				
 			{#if startCode === false}
 				<p class="code_text">Let’s work together.<br>Write anything <button class="code_button" on:click={() => initCode()}> in here {#if caretVisible == true }|{/if} </button></p>
 				{:else if fontSize > 0}
@@ -271,7 +286,7 @@ function stopCaretInterval() {
 			<div class="project_2">
 				<button class="project_button"></button>
 				<img class="project_img" src="css/img/project/Groupe 14.svg" alt="">
-				<p class="project_text" style="width:10vw">Création<br>de site web</p>
+				<p class="project_text">Création<br>de site web</p>
 			</div>
 			<div class='space'></div>
 			<div class="project_3">

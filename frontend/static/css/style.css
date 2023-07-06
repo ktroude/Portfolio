@@ -76,8 +76,8 @@
 
 .presentation_text{
     margin: 0;
-    font: normal 2vw/2vw Minimo;
-    width: 60%;
+    font: normal normal normal 40px/42px Minimo;
+    width: 80%;
     margin: 0 auto; /* Centrer horizontalement */
     text-align: center;
 }
@@ -143,20 +143,23 @@
 }
 
 .project_box{
+    margin-top: 16px;
     position: relative;
     align-items: center;
     display: flex;
     flex-direction: row;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
     width: 82.48697916666667vw;
-    height: 55vh;
+    height: auto; 
 }
 
 .project_1{
 
     width: 26.79269882659713vw;
     height: 22vw;
+    min-width: 316px;
+    min-height: 277px;
     max-height: 100%;
     background-image: url('img/project/Rectangle\ 20.svg');
     background-size: 100% 100%;
@@ -170,6 +173,8 @@
 
     width: 26.79269882659713vw;
     height: 22vw;
+    min-width: 316px;
+    min-height: 277px;
     max-height: 100%;
     background-image: url('img/project/Rectangle\ 24.svg');
     background-size: 100% 100%;
@@ -183,6 +188,8 @@
 
     width: 26.79269882659713vw;
     height: 22vw;
+    min-width: 316px;
+    min-height: 277px;
     max-height: 100%;
     background-image: url('img/project/Rectangle\ 22.svg');
     background-size: 100% 100%;
@@ -192,11 +199,6 @@
     position: relative;
 }
 
-.space {
-    width:1.1082138200782268vw;
-    height: 100%;
-    background-color: transparent;
-}
 
 .project_button{
     border: none;
@@ -244,7 +246,7 @@
     }
 
     .presentation_text {
-        font: normal 30px/32px Minimo;
+        font: normal normal normal 22px/23px Minimo;
         width: 80%;
     }
 
@@ -252,3 +254,57 @@
         font: normal 15px/20px Minimo;
     }
   }
+
+
+@media (max-width: 1024px) {
+
+    .presentation_text {
+        font: normal normal normal 31px/32px Minimo;
+        width: 80%;
+    }
+}
+
+@media (max-width: 1300px) {
+
+    .presentation_text {
+        font: normal normal normal 35px/37px Minimo;
+        width: 80%;
+    }
+}
+
+
+@media (max-width: 1155px) {
+    .code_img {
+        overflow: hidden;
+    }
+
+    .code_text{
+        overflow: hidden;
+    }
+
+   .project_box{
+    flex-direction: column;
+   }
+
+
+   .project_1{
+        width: 44vw;
+        height: 38vw;
+   }
+
+    .project_2{
+        margin-top: 10px;
+        width: 44vw;
+        height: 38vw;
+   }
+
+    .project_3{
+        margin-top: 10px;
+        width: 44vw;
+        height: 38vw;
+   }
+
+   .project_text{
+        font: normal normal normal 22px/26px Minimo;
+   }
+}
