@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
 	import { onMount } from 'svelte';
+	import { each } from 'svelte/internal';
   
 	let loading: boolean = false;
 	let invadersPack: Invader[] = [];
@@ -10,6 +11,13 @@
 	let userInputNb:number = 0;
 	let userCode:string = '';
 	let code:string = '';
+
+	let fontSize:number = 3;
+  	let width:number = 80;
+	let reduce:boolean = false;
+
+	let startScroll:boolean = false;
+
 
 	interface Invader {
 	  x: number;
@@ -60,13 +68,21 @@
 	}
 
 	function createInvaders(nb: number) {
-	  for (let i = 0; i < nb; i++) {
-		invadersPack = [...invadersPack, create_invader(i * 100, i*100, 0)];
-		getDir(invadersPack[i]);
-	  }
-	  invadersPackStore.set(invadersPack);
+	//  for (let i = 0; i < nb; i++) {
+		invadersPack = [...invadersPack, create_invader(35.5, 65, 0)];
+		invadersPack = [...invadersPack, create_invader(41.5, 65, 0)];
+		invadersPack = [...invadersPack, create_invader(48, 65, 0)];
+		invadersPack = [...invadersPack, create_invader(54, 65, 0)];
+		invadersPack = [...invadersPack, create_invader(60, 65, 0)];
+		// invadersPack = [...invadersPack, create_invader(55, 40, 0)];
+		// invadersPack = [...invadersPack, create_invader(61, 40, 0)];
+		// invadersPack = [...invadersPack, create_invader(67, 40, 0)];
+		// invadersPack = [...invadersPack, create_invader(73, 40, 0)];
+	//	getDir(invadersPack[i]);
+	//  }
+	//	invadersPackStore.set(invadersPack);
 	}
-  
+
 	function create_invader(x: number, y: number, status: number): Invader {
 		const randomDuration = Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000;
 	  return {
@@ -80,6 +96,8 @@
 	  };
 	}
   
+
+
 // 	function executeInvader(invader: Invader): Promise<void> {
 //   return new Promise((resolve) => {
 //     const randomDuration = Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000;
@@ -98,7 +116,9 @@
 //   });
 // }
 
-
+function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 function startInvaders() {
 	const intervalDuration = 16; // Durée en millisecondes entre chaque rafraîchissement
@@ -124,6 +144,7 @@ function initCode() {
 	startCode = true;
 	startCaretInterval();
 	window.addEventListener('keypress', handleKeyPress);
+	window.addEventListener('keypress', moveCodeDiv);
 	code = '	function create_invader(x: number, y: number, status: number): Invader {\
 		const randomDuration = Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000;\
 	  return {\
@@ -138,20 +159,39 @@ function initCode() {
 	}'
 }
 
+async function moveCodeDiv() {
+	if (userInputNb >= code.length / 4) {
+		stopCode();
+		await sleep(300);
+		while (true) {
+			// if (width > 20)
+				width -= 2;
+			// else
+			// 	width = 10;
+			if (fontSize > 0)
+				fontSize -= 0.1;
+			await sleep(20);
+			if (fontSize == 0)
+				break;
+		}
+	}
+}
+
 function handleKeyPress(event: KeyboardEvent) {
 	userInputNb++;
 	displayCode();
+	console.log(userInputNb);
 }
 
 function stopCode() {
-	startCode = false;
+//	startCode = false;
 	userInputNb = 0;	
 	stopCaretInterval();
 	window.removeEventListener('keypress', handleKeyPress);
 }
 
 function displayCode() {
-	userCode = code.slice(0, userInputNb * 2);
+	userCode = code.slice(0, userInputNb * 4);
 }
 
 let caretPosition:number = 0;
@@ -168,10 +208,15 @@ function stopCaretInterval() {
 	clearInterval(caretInterval);
 }
 
+  function handleScroll() {
+    if (window.innerHeight >= document.body.offsetHeight && startScroll == false) {
+
+    }
+  }
 
 	onMount(() => {
 	  createInvaders(10);
-	  startInvaders();
+	//  startInvaders();
 	  loading = true;
 	});
   </script>
@@ -182,8 +227,14 @@ function stopCaretInterval() {
 	<link rel="stylesheet" href="css/style.css">
 </svelte:head>
 
+
+
 <body class="body">
 	{#if loading === true}
+
+	{#each invadersPack as invader}
+		<button class='invader' style="left: calc({invader.x}vw); top: calc({invader.y}vh);"></button>
+	{/each}
 
 	<div class="header_box">
 		<p class="header_text">Hello World! Do you need a developer?</p> 
@@ -201,8 +252,10 @@ function stopCaretInterval() {
 			<img class='code_img' src='css/img/Rectangle 310.png' alt='black rectangle'>
 			{#if startCode === false}
 				<p class="code_text">Let’s work together. Write anything <button class="code_button" on:click={() => initCode()}> in here ! </button></p>
-			{:else}
-				<p class="code">{userCode} {#if caretVisible == true }|{/if} 
+			{:else if fontSize > 0}
+				<p class="code" style="	font: normal normal normal {fontSize}vw/{fontSize}vw Minimo;
+										width: {width}%">
+					{userCode} {#if caretVisible == true }|{/if} 
 			{/if}
 		</div>
 	</div>

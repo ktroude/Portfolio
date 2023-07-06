@@ -8,12 +8,25 @@
     /* UI Properties */
     background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
+    position: relative;
     }
 
 @font-face {
     font-family: 'Minimo';
     src: url('fonts/Ahmet-Altun-Minimo-Regular_0.otf') format('opentype');
     }
+
+.invader{
+    background-image: url('img/invader/invader.png');
+    background-color: transparent;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    border: none;
+    height: auto;
+    width: 10vw;
+    position: absolute;
+    z-index: 1;
+}
 
 .header_box{
     /* display: flex; */
@@ -95,14 +108,14 @@
 }
 
 .code{
-    width: 80%;
+    /* width: 80%; */
 	position: absolute;
 	top: 40%;
     justify-content: center;
 	left: 55%;
 	transform: translate(-50%, -50%);
 	color: #80F4A5;
-	font: normal normal normal 3vw/3vw Minimo;
+	/* font: normal normal normal 3vw/3vw Minimo; */
     background-color: black;
     overflow: hidden;
 
