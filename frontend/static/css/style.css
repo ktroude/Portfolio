@@ -17,14 +17,17 @@
     }
 
 .invader{
-    background-image: url('img/invader/invader.png');
-    background-color: transparent;
-    background-size: auto 100%;
-    background-repeat: no-repeat;
-    border: none;
-    height: auto;
-    width: 10vw;
+    width: 4.557291666666667vw;
+    min-width: 2.6041666666666665vw;
+    height:7.530120481927711vh ;
+    min-height: 4.518072289156627vh;
+    margin: 0px;
+    padding: 0px;
+    background-image: url('img/invader/invader.svg');
+    background-size: contain;
+    background-size: 100% 100%;
     position: absolute;
+    opacity: 1;
     z-index: 1;
 }
 
@@ -32,7 +35,7 @@
     /* display: flex; */
     width: 100vw;
     height: 100vh;
-    background-image: url('img/Rectangle\ 1.png');
+    background-image: url('img/header/Rectangle\ 1@2x.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     text-align: center;
@@ -41,7 +44,7 @@
 
 .header_text{
     margin: 0;
-    font: normal 120px/100px Minimo;
+    font: normal 7vw/7vw Minimo;
     color: black;
     width: 80%;
     position: absolute;
@@ -52,12 +55,13 @@
 }
 
 .header_invader{
+    padding-bottom: 10vh;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 100%;
-    max-height: 100%;
+    max-height: 80%;
 }
 
 .presentation_box{
@@ -82,11 +86,12 @@
 	display: flex;
 	justify-content: center;
 	background-color: transparent;
+    width: 100vw;
 }
   
   .code_img_container {
 	position: relative;
-	width: 80%;
+    width: 82.48697916666667vw;
 	display: flex;
 	justify-content: center;
 	background-color: transparent;
@@ -130,24 +135,30 @@
 	border: none;
 }
 
-.project_box{
+.project_box_container{
     display: flex;
-    background-color: transparent;
     justify-content: center;
-    align-items: center;
     width: 100vw;
-    height: 50vh;
+    height: auto;
+}
+
+.project_box{
+    position: relative;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    width: 82.48697916666667vw;
+    height: 55vh;
 }
 
 .project_1{
-    margin-top: 16px;
-    margin-top: 16px;
-    margin-left: 8px;
-    margin-right: 8px;
-    width: 300px;
-    height: 300px;
+
+    width: 26.79269882659713vw;
+    height: 22vw;
     max-height: 100%;
-    background-image: url('img/Rectangle\ 20.png');
+    background-image: url('img/project/Rectangle\ 20.svg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     text-align: center;
@@ -156,13 +167,11 @@
 }
 
 .project_2{
-    margin-top: 16px;
-    margin-left: 8px;
-    margin-right: 8px;
-    width: 300px;
-    height: 300px;
+
+    width: 26.79269882659713vw;
+    height: 22vw;
     max-height: 100%;
-    background-image: url('img/Rectangle\ 24.png');
+    background-image: url('img/project/Rectangle\ 24.svg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     text-align: center;
@@ -171,18 +180,22 @@
 }
 
 .project_3{
-    margin-top: 16px;
-    margin-left: 8px;
-    margin-right: 8px;
-    width: 300px;
-    height: 300px;
+
+    width: 26.79269882659713vw;
+    height: 22vw;
     max-height: 100%;
-    background-image: url('img/Rectangle\ 22.png');
+    background-image: url('img/project/Rectangle\ 22.svg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     text-align: center;
     justify-items: center;
     position: relative;
+}
+
+.space {
+    width:1.1082138200782268vw;
+    height: 100%;
+    background-color: transparent;
 }
 
 .project_button{
@@ -207,8 +220,8 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 100%;
-    max-height: 100%;
+    width: 50%;
+    height: auto;
 }
 
 .work_box{
@@ -226,8 +239,8 @@
 
 @media (max-width: 768px) {
     .header_text {
-      font-size: 80px;
-      line-height: 80px;
+      font-size: 5vh;
+      line-height: 5vh;
     }
 
     .presentation_text {

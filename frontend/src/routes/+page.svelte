@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
 	import { onMount } from 'svelte';
-	import { each } from 'svelte/internal';
+	import { TweenMax } from 'gsap';
   
 	let loading: boolean = false;
 	let invadersPack: Invader[] = [];
@@ -69,15 +69,7 @@
 
 	function createInvaders(nb: number) {
 	//  for (let i = 0; i < nb; i++) {
-		invadersPack = [...invadersPack, create_invader(35.5, 65, 0)];
-		invadersPack = [...invadersPack, create_invader(41.5, 65, 0)];
-		invadersPack = [...invadersPack, create_invader(48, 65, 0)];
-		invadersPack = [...invadersPack, create_invader(54, 65, 0)];
-		invadersPack = [...invadersPack, create_invader(60, 65, 0)];
-		// invadersPack = [...invadersPack, create_invader(55, 40, 0)];
-		// invadersPack = [...invadersPack, create_invader(61, 40, 0)];
-		// invadersPack = [...invadersPack, create_invader(67, 40, 0)];
-		// invadersPack = [...invadersPack, create_invader(73, 40, 0)];
+		invadersPack = [...invadersPack, create_invader(35.5, 57, 0)];
 	//	getDir(invadersPack[i]);
 	//  }
 	//	invadersPackStore.set(invadersPack);
@@ -136,13 +128,13 @@ function startInvaders() {
       return invader;
     });
     invadersPackStore.set(invadersPack);
-  }, intervalDuration);
+}, intervalDuration);
 }
 
 
 function initCode() {
 	startCode = true;
-	startCaretInterval();
+	window.addEventListener('keydown', stopSpaceKey)
 	window.addEventListener('keypress', handleKeyPress);
 	window.addEventListener('keypress', moveCodeDiv);
 	code = '	function create_invader(x: number, y: number, status: number): Invader {\
@@ -180,7 +172,6 @@ async function moveCodeDiv() {
 function handleKeyPress(event: KeyboardEvent) {
 	userInputNb++;
 	displayCode();
-	console.log(userInputNb);
 }
 
 function stopCode() {
@@ -214,74 +205,87 @@ function stopCaretInterval() {
     }
   }
 
-	onMount(() => {
+  function stopSpaceKey(event:KeyboardEvent) {
+	if (event.key === ' ') {
+    	event.preventDefault();
+		userInputNb++;
+		displayCode();
+  	}
+  }
+ 
+  onMount(() => {
+	  startCaretInterval();
 	  createInvaders(10);
-	//  startInvaders();
+	  //  startInvaders();
 	  loading = true;
 	});
-  </script>
+	</script>
   
+  
+  <svelte:head>
+	  <title>Hello World!</title>
+	  <link rel="stylesheet" href="css/style.css">
+	</svelte:head>
+	
 
-<svelte:head>
-	<title>Hello World!</title>
-	<link rel="stylesheet" href="css/style.css">
-</svelte:head>
-
-
-
-<body class="body">
-	{#if loading === true}
-
-	{#each invadersPack as invader}
-		<button class='invader' style="left: calc({invader.x}vw); top: calc({invader.y}vh);"></button>
-	{/each}
-
-	<div class="header_box">
-		<p class="header_text">Hello World! Do you need a developer?</p> 
-		<img class="header_invader" src="css/img/Groupe 2/Groupe 2.png" alt="big invader">
-	</div>
-
-	<div class='presentation_box'>
-		<p class='presentation_text' style='margin-top: 91px;'>	My name is Kevin Troude, and I’m a developer.
-		<p class='presentation_text'>	I studied in school 42. I can write in C, C++, Javascript, Python, and I can learn quickly any further language.
-		<p class='presentation_text' style='margin-bottom: 76px;'>	I bet we can make a great work together, wanna give it a try ?
-	</div>
-
-	<div class='code_box'>
+	
+	<body class="body">
+		{#if loading === true}
+		
+		{#each invadersPack as invader}
+		<div class='invader' style="left: calc({invader.x}vw); top: calc({invader.y}vh);"></div>
+		{/each}
+		
+		<div class="header_box">
+			<p class="header_text">Hello World! Do you need a developer?</p> 
+			<img class="header_invader" src='css/img/header/Groupe 2.svg' alt="big invader">
+		</div>
+		
+		<div class='presentation_box'>
+			<p class='presentation_text' style='margin-top: 91px;'>	My name is Kevin Troude, and I’m a developer.
+				<p class='presentation_text'>	I studied in school 42. I can write in C, C++, Javascript, Python, and I can learn quickly any further language.
+					<p class='presentation_text' style='margin-bottom: 76px;'>	I bet we can make a great work together, wanna give it a try ?
+					</div>
+					
+					<div class='code_box'>
 		<div class="code_img_container">
-			<img class='code_img' src='css/img/Rectangle 310.png' alt='black rectangle'>
+			<img class='code_img' src='css/img/code_box/Rectangle 310.svg' alt='black rectangle'>
 			{#if startCode === false}
-				<p class="code_text">Let’s work together. Write anything <button class="code_button" on:click={() => initCode()}> in here ! </button></p>
-			{:else if fontSize > 0}
+				<p class="code_text">Let’s work together.<br>Write anything <button class="code_button" on:click={() => initCode()}> in here {#if caretVisible == true }|{/if} </button></p>
+				{:else if fontSize > 0}
 				<p class="code" style="	font: normal normal normal {fontSize}vw/{fontSize}vw Minimo;
-										width: {width}%">
+				width: {width}%">
 					{userCode} {#if caretVisible == true }|{/if} 
 			{/if}
 		</div>
 	</div>
 
-	<div class="project_box">
-		<div class="project_1">
-			<button class="project_button"></button>
-			<img class="project_img" src="css/img/Groupe 16.png" alt="">
-			<p class="project_text">Développement front-end et back-end</p>
-		</div>
-		<div class="project_2">
-			<button class="project_button"></button>
-			<img class="project_img" src="css/img/Groupe 14.png" alt="">
-			<p class="project_text">Création de site web</p>
-		</div>
-		<div class="project_3">
-			<button class="project_button"></button>
-			<img class="project_img" src="css/img/Groupe 12.png" alt="">
-			<p class="project_text">Développement de logiciel (utilisation d’algorithmes)</p>
+	<div class="project_box_container">
+		<div class="project_box">
+			<div class="project_1">
+				<button class="project_button"></button>
+				<img class="project_img" src="css/img/project/Groupe 16.svg" alt="">
+				<p class="project_text">Développement<br>front-end et back-end</p>
+			</div>
+			<div class='space'></div>
+			<div class="project_2">
+				<button class="project_button"></button>
+				<img class="project_img" src="css/img/project/Groupe 14.svg" alt="">
+				<p class="project_text" style="width:10vw">Création<br>de site web</p>
+			</div>
+			<div class='space'></div>
+			<div class="project_3">
+				<button class="project_button"></button>
+				<img class="project_img" src="css/img/project/Groupe 12.svg" alt="">
+				<p class="project_text">Développement de logiciel (utilisation d’algorithmes)</p>
+			</div>
 		</div>
 	</div>
-	
-	<div class="work_box">
-		<p class="work_text">Would you like to work with me ?</p>
-	</div>
-	
+		
+		<div class="work_box">
+			<p class="work_text">Would you like to work with me ?</p>
+		</div>
+		
 	{/if}
 
 </body>
