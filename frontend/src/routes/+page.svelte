@@ -247,7 +247,7 @@ function stopCaretInterval() {
 		{/each} -->
 		
 		<div class="header_box">
-			<p class="header_text">Hello World! Do you need a developer?</p> 
+			<p class="header_text">Hello World ! Do you need a developer ?</p> 
 			<img class="header_invader" src='css/img/header/Groupe 2.svg' alt="big invader">
 		</div>
 		
@@ -262,7 +262,7 @@ function stopCaretInterval() {
 			{#if isLargeScreen}
 				<img class='code_img' src='css/img/code_box/Rectangle 310.svg' alt='black rectangle'>
 			{:else}
-				<img class='code_img' src='css/img/code_box/Groupe 18.svg' alt='black rectangle'>
+				<img class='code_img' src='css/img/code_box/Rectangle 318.svg' alt='black rectangle'>
 			{/if}
 				
 			{#if startCode === false}
@@ -280,19 +280,19 @@ function stopCaretInterval() {
 			<div class="project_1">
 				<button class="project_button"></button>
 				<img class="project_img" src="css/img/project/Groupe 16.svg" alt="">
-				<p class="project_text">Développement<br>front-end et back-end</p>
+				<p class="project_text">Frontend and backend<br>development</p>
 			</div>
 			<div class='space'></div>
 			<div class="project_2">
 				<button class="project_button"></button>
 				<img class="project_img" src="css/img/project/Groupe 14.svg" alt="">
-				<p class="project_text">Création<br>de site web</p>
+				<p class="project_text">Website<br>development</p>
 			</div>
 			<div class='space'></div>
 			<div class="project_3">
 				<button class="project_button"></button>
 				<img class="project_img" src="css/img/project/Groupe 12.svg" alt="">
-				<p class="project_text">Développement de logiciel (utilisation d’algorithmes)</p>
+				<p class="project_text">Mobile software engineer</p>
 			</div>
 		</div>
 	</div>

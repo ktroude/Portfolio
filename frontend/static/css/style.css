@@ -44,9 +44,9 @@
 
 .header_text{
     margin: 0;
-    font: normal 7vw/7vw Minimo;
+    font: normal 120px/100px Minimo;
     color: black;
-    width: 80%;
+    width: 90%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -122,7 +122,6 @@
 	color: #80F4A5;
 	/* font: normal normal normal 3vw/3vw Minimo; */
     background-color: black;
-    overflow: hidden;
 
 }
 
@@ -209,7 +208,7 @@
 
 .project_text{
     width: 100%;
-    font: normal 26px/30px Minimo;
+    font: normal 26px/24px Minimo;
     position: absolute;
     top: 77%;
     left: 50%;
@@ -275,7 +274,8 @@
 
 @media (max-width: 1155px) {
     .code_img {
-        overflow: hidden;
+        height: 50vh;
+
     }
 
     .code_text{
